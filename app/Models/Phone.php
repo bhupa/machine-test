@@ -13,6 +13,7 @@ class Phone extends Model
         'contact_id',
         'is_landline',
         'has_whatsapp',
-        'can_receive_text'
+        'can_receive_text',
+        'country_code'
     ];
 }

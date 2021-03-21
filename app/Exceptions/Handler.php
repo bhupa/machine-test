@@ -51,11 +51,11 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
 
-        if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
-            return response()->json([
-             'message' => 'Your are Unauthenticated.'
-            ],401);
-        }
+        // if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+        //     return response()->json([
+        //      'message' => 'Your are Unauthenticated.'
+        //     ],401);
+        // }
         
         return parent::render($request, $exception);
     }
