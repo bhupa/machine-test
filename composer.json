@@ -15,8 +15,8 @@
         "laravel/framework": "^7.29",
         "laravel/sanctum": "^2.9",
         "laravel/tinker": "^2.5",
-        "laravelcollective/html": "^6.2",
         "pimax/fb-messenger-php": "^2.0",
+        "spatie/laravel-query-builder": "^3.3",
         "twilio/sdk": "^6.18"
     },
     "require-dev": {

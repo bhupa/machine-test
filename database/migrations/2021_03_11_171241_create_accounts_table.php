@@ -16,9 +16,10 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email');
-            $table->unsignedBigInteger('identifier__id')->nullable()->default(null);
-            $table->json(' credentials');
+            $table->string('app_id')->nullable();
+           $table->string('app_url')->nullable();
+           $table->string('app_token')->nullable();
+           $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

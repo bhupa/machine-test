@@ -14,4 +14,6 @@ class Email extends Model
         'contact_id',
         
     ];
+
+    public $timestamps = true;
 }

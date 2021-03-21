@@ -174,7 +174,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
         // Casperlaitw\LaravelFbMessenger\LaravelFbMessengerServiceProvider::class,
+
 
     ],
 
@@ -229,7 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         // 'Menu' => Casperlaitw\LaravelFbMessenger\Facades\MessengerMenu::class,
-        
+    
 
     ],
 

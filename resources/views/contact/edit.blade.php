@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title','Create Contact')
+@section('title','Edit Contact')
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -26,9 +26,9 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Contact List</h3>
+              <h3 class="card-title">Edit List</h3>
 
-              <a href="{{ route('contact.create') }}" style="float: right" class="btn btn-success"> Add Contact</a>
+              <a href="{{ route('contact') }}" style="float: right" class="btn btn-success"> Add Contact</a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -37,9 +37,9 @@
                   <div class="col-md-6">
                     <div class="card card-danger">
                         <div class="card-header">
-                          <h3 class="card-title">Contact Form</h3>
+                          <h3 class="card-title">Edit Contact Form</h3>
                         </div>
-                        <form action="{{ route('contact.store') }}" method="post">
+                        <form action="{{ route('contact.update',$contact->id) }}" method="post">
                             {{ csrf_field() }}
                             @if (Session::has('flash_error'))
                             <span class="help-block text-danger">{{ session::get('flash_error') }}</span>
@@ -56,7 +56,7 @@
           
                             <div class="input-group">
                              
-                              <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
+                              <input type="text" class="form-control" name="first_name" value="{{ $contact->first_name }}">
                             </div>
                             @if ($errors->has('first_name'))
                             <span class="help-block text-danger">{{ $errors->first('first_name') }}</span>
@@ -68,7 +68,7 @@
           
                             <div class="input-group">
                               
-                              <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+                              <input type="text" class="form-control" name="last_name" value="{{ $contact->last_name }}">
                             </div>
                             @if ($errors->has('last_name'))
                             <span class="help-block text-danger">{{ $errors->first('last_name') }}</span>

@@ -1,5 +1,5 @@
 @extends('layout.admin')
-
+@section('title','Dasboard')
 @section('content')
 <div class="content-header">
     <div class="container-fluid">

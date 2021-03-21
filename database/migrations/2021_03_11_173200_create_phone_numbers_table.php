@@ -16,6 +16,7 @@ class CreatePhoneNumbersTable extends Migration
         Schema::create('phone_numbers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('contact_id')->nullable()->default(null);
+            $table->integer('country_code')->null();
             $table->string('number');
             $table->boolean('is_landline')->default(0);
             $table->boolean('can_receive_text')->default(0);

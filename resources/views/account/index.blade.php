@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title','Contact Lists')
+@section('title','Account Lists')
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -26,9 +26,9 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Contact List</h3>
+              <h3 class="card-title">Account List</h3>
 
-              <a href="{{ route('contact.create') }}" style="float: right" class="btn btn-success"> Add Contact</a>
+              <a href="{{ route('account.create') }}" style="float: right" class="btn btn-success"> Add Account</a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -42,24 +42,21 @@
                 <thead>
                 <tr>
                   <th>S.no</th>
-                  <th>First Nmae</th>
-                  <th>Last Name</th>
+                  <th>Nmae</th>
+                  <th>Url</th>
                   {{-- <th>Number</th> --}}
-                  <th>Created At</th>
-                  {{-- <th></th> --}}
-                  {{-- <th>Send Message</th> --}}
+                  <th>Status</th>
+                 
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-               @foreach($contacts as $key=>$contact)
-                <tr>
+               @foreach($accounts as $key=>$account)
+                <tr id={{ $key+1 }}>
                   <td>{{ $key+1 }}</td>
-                  <td>{{ $contact->first_name }}</td>
-                  <td>{{ $contact->last_name }}</td>
-                  {{-- <td>{{ $contact }}</td> --}}
-                  <td>{{ $contact->created_at->format('Y-m-d') }}</td>
-                  {{-- <td>
+                  <td>{{ $account->name }}</td>
+                  <td>{{ $account->app_url }}</td>
+                  <td>
                     <a href="javascript:void(0)"
                     title="Change-status"
                     data-toggle="tooltip"
@@ -73,19 +70,16 @@
                    </a>
            
 
-                  </td> --}}
+                  </td>
                   <td>
                    
-                    <a href="{{ route('phone',$contact->id) }}" class="btn btn-sm"> <i class="fas fa-phone"></i></a>
-                    <a href="{{ route('email',$contact->id) }}" id="{{ $contact->id }}" class="btn btn-sm "> <i class="fas fa-envelope"></i></a>
-                      <a href="{{ route('contact.edit',$contact->id) }}" class="btn btn-sm"> <i class="fas fa-edit"></i></a>
-                      <a href="javascript:void(0)" id="{{ $contact->id }}" class="btn btn-sm delete"> <i class="fas fa-trash"></i></a>
+                      <a href="{{ route('account.edit',$account->id) }}" class="btn btn-sm"> <i class="fas fa-edit"></i></a>
+                      <a href="javascript:void(0)" id="{{ $account->id }}" class="btn btn-sm delete"> <i class="fas fa-trash"></i></a>
                   </td>
                  
                  
-                 
                 </tr>
-                @endforeach
+                @endforeach 
           
                
                 
@@ -127,7 +121,7 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "POST",
-                            url: "{{ route('contact.change-status') }}",
+                            url: "{{ route('account.change-status') }}",
                             data: {
                                 'id': id,
                                 _token: '{!! csrf_token() !!}'
@@ -176,7 +170,7 @@
                       if (result.isConfirmed) {
                         $.ajax({
                             type: "POST",
-                            url: '{{ route('contact.destroy') }}',
+                            url: '{{ route('account.destroy') }}',
                             data: {
                                 id: id,
                                 _method: 'Post',
@@ -200,10 +194,45 @@
   } 
 })
 
-             
+                // swal({
+                //     title: 'Are you sure?',
+                //     text: 'You will not be able to recover this !',
+                //     type: 'warning',
+                //     icon:'warning', //The right way
+                //     showCancelButton: true, //showCancelButton and showConfirmButton are no longer needed. Instead, you can set buttons: true to show both buttons, or buttons: false to hide all buttons. By default, only the confirm button is shown.
+                //     confirmButtonColor: '#d33', //you should specify all stylistic changes through CSS. As a useful shorthand, you can set dangerMode: true to make the confirm button red. Otherwise, you can specify a class in the button object.
+                //     confirmButtonText: "Yes", // everything is in the buttons argument now
+                //     closeOnConfirm: "No",
+                //     buttons:true,//The right way
+                //     buttons: ["No", "Yes"] //The right way to do it in Swal1
+                // }).then(function(isConfirm){
+                //     if (isConfirm) {
+                //         $.ajax({
+                //             type: "POST",
+                //             url: '{{ route('account.destroy') }}',
+                //             data: {
+                //                 id: id,
+                //                 _method: 'DELETE',
+                //                 _token: '{!! csrf_token() !!}'
+                //             },
+                //             success: function (response) {
+                //                 swal("Deleted!", response.message, "success");
+                //                 var oTable = $('#datatable').dataTable();
+                //                 var nRow = $($object).parents('tr')[0];
+                //                 oTable.fnDeleteRow(nRow);
+                //             },
+                //             error: function (e) {
+                //                 if (e.responseJSON.message) {
+                //                     swal('Error', e.responseJSON.message, 'error');
+                //                 } else {
+                //                     swal('Error', 'Something went wrong while processing your request.', 'error')
+                //                 }
+                //             }
+                //         });
+                //     }
+                // })
             });
   });
 
 </script>
 @endsection
-

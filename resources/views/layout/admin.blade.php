@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Mahine Text | @yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,10 +26,11 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
- 
+  <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.css')}}">
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+  @if(auth()->check())
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -199,6 +200,7 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
+@endif
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -222,6 +224,9 @@
 <script src="{{  asset('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
 <!-- daterangepicker -->
 <script src="{{  asset('plugins/moment/moment.min.js')}}"></script>
+
+<script src="{{ asset('plugins/sweetalert2/sweetalert2.js')}}"></script>
+
 <script src="{{  asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{  asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
@@ -241,6 +246,9 @@
     
     $('#data-table').DataTable();
   });
+
 </script>
+
+@yield('script')
 </body>
 </html>

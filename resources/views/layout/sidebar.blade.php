@@ -29,10 +29,19 @@
            
           </li>
           <li class="nav-item">
-            <a href="{{ route('contact') }}l" class="nav-link">
+            <a href="{{ route('contact') }}" class="nav-link">
               <i class="nav-icon fas fa-phone"></i>
               <p>
                 Contact
+               
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('account') }}" class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
+              <p>
+                Account
                
               </p>
             </a>
